@@ -1,4 +1,4 @@
-package org.example.ktpm_20116031_votandat_lab6.model;
+package org.example.ktpm_20116031_votandat_lab6.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @NoArgsConstructor
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +19,11 @@ public class Order {
     private LocalDate orderDay;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
+
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
     private int quantity;
 

@@ -1,4 +1,4 @@
-package org.example.ktpm_20116031_votandat_lab6.model;
+package org.example.ktpm_20116031_votandat_lab6.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
