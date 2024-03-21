@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <h1>Cart Page</h1>
+</body>
+    <form th:action="@{/order}" th:object="${formOrder}" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Image</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Inventory</th>
+                <th>Quantity</th>
+                <th>Check</th>
+            </tr>
+            <thead>
+            <tbody>
+            <tr th:each="product, iterStat : ${products}">
+                <td th:text="${product.productName}"></td>
+                <td>
+                    <img th:src="${product.productImage}" width="100" height="100">
+                </td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.inventory}"></td>
+
+                <td>
+                    <input type="hidden" name="product" th:field="*{orders[__${iterStat.index}__].product.id}" th:value="${__${iterStat.index}__}">
+                    <input type="number" name="quantity" th:field="*{orders[__${iterStat.index}__].quantity}"  >
+                </td>
+                <td>
+                    <input type="checkbox" name="check" th:value="${product.id}">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h1> Customer Information</h1>
+        <div class="form-group" style="width: 400px; margin-left: 50px">
+            <label for="name">Name</label>
+            <input th:field="*{customer.name}" class="form-control" type="text" name="name" id="name" required>
+            <label for="email">Email</label>
+            <input th:field="*{customer.email}" class="form-control"  type="email" name="email" id="email" required >
+            <label for="address">Address</label>
+            <input th:field="*{customer.address}" class="form-control"  type="text" name="address" id="address" required>
+            <br>
+            <input class="form-control"  type="submit" value="Checkout">
+        </div>
+
+    </form>
+</html>

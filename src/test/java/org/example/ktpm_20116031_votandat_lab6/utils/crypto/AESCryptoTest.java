@@ -1,5 +1,6 @@
 package org.example.ktpm_20116031_votandat_lab6.utils.crypto;
 
+import org.example.ktpm_20116031_votandat_lab6.backend.utils.crypto.AESCrypto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
